@@ -1,0 +1,6 @@
+.chart{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}

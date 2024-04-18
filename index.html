@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="chart">
+        <canvas id="lineChart"></canvas>
+        <canvas id="barChart"></canvas>
+    </div>
+</body>
+
+</html>
+
+<script src="./node_modules/chart.js/dist/chart.umd.js"></script>
+
+<script>
+    const labelTime = [
+        { time: "00:00"},
+        { time: "03:00"},
+        { time: "06:00"},
+        { time: "09:00"},
+        { time: "12:00"},
+        { time: "15:00"},
+        { time: "18:00"},
+        { time: "21:00"},
+    ];
+    const temp = [
+        {  count: 19 },
+        {  count: 19 },
+        {  count: 19 },
+        {  count: 21 },
+        {  count: 20 },
+        {  count: 19 },
+        {  count: 18 },
+        {  count: 18 },
+    ];
+    const umi = [
+        {  count: 42 },
+        {  count: 42 },
+        {  count: 42 },
+        {  count: 39 },
+        {  count: 43 },
+        {  count: 42 },
+        {  count: 40 },
+        {  count: 47 },
+    ];
+
+
+
+    const data = {
+        labels: labelTime.map(row => row.time),
+        datasets: [
+            {   
+                label: 'Temperatura:',
+                data: temp.map(row => row.count)
+            },
+            {   
+                label: 'Umidade',
+                data: umi.map(row => row.count)
+            }
+        ]
+    }
+    const config = {
+        type: 'line',
+        options: {},
+        data: data
+    }
+
+    const TimeMedia = [
+        { time: "00:00"},
+        { time: "03:00"},
+        { time: "06:00"},
+        { time: "09:00"},
+        { time: "12:00"},
+        { time: "15:00"},
+        { time: "18:00"},
+        { time: "21:00"},
+    ];
+    const tempMedia = [
+        {  count: 19 },
+        {  count: 19 },
+        {  count: 19 },
+        {  count: 21 },
+        {  count: 20 },
+        {  count: 19 },
+        {  count: 18 },
+        {  count: 18 },
+    ];
+    const umiMedia = [
+        {  count: 42 },
+        {  count: 42 },
+        {  count: 42 },
+        {  count: 39 },
+        {  count: 43 },
+        {  count: 42 },
+        {  count: 40 },
+        {  count: 47 },
+    ];
+    const dataMedia = {
+        labels: TimeMedia.map(row => row.time),
+        datasets: [
+            {   
+                label: 'Temperatura:',
+                data: tempMedia.map(row => row.count)
+            },
+            {   
+                label: 'Umidade',
+                data: umiMedia.map(row => row.count)
+            }
+        ]
+    }
+    const configMedia = {
+        type: 'bar',
+        data: dataMedia,
+         }
+</script>
+<script>
+    let myChart = new Chart(
+        document.getElementById('lineChart'),
+        config
+    );
+    let MySecondChart = new Chart(
+        document.getElementById('barChart'),
+        configMedia
+    );
+
+</script>
